@@ -194,7 +194,7 @@ app.put("/blogs/:blogId", authenticateToken, async (request, response) => {
     SET blog = '${blog}'
     WHERE blog_id = ${blogId};`
     const dbResponse = await db.run(PUT_BLOG_SQL_QUERY)
-    response.send(`blog with ${blogId} updated successfully`)
+    response.send(`blog updated successfully`)
 })
 
 app.delete("/blogs/:blogId", authenticateToken, async (request, response) => {
@@ -202,7 +202,7 @@ app.delete("/blogs/:blogId", authenticateToken, async (request, response) => {
 
     const DELETE_BLOG_SQL_QUERY = `DELETE FROM blog WHERE blog_id = ${blogId};`
     const dbResponse = await db.run(DELETE_BLOG_SQL_QUERY)
-    response.send(dbResponse)
+    response.send("Blog deleted successfully")
 })
 
 app.get("/blogs/:blogId/comments", authenticateToken, async (request, response) => {
